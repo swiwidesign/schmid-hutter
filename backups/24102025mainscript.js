@@ -57,11 +57,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         .set(".nav_logo-wrapper, .nav_button-wrapper, .button-text .is-nav", {
             "will-change": "opacity, transform"
         })
-
-        .set(".container .is-nav", {
-            visibility: "visible",
-            opacity: 100
-        })
         .from(".nav_logo-wrapper", {
             opacity: 0,
             yPercent: -100,
@@ -77,7 +72,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             "<50%"
         )
         .from(
-            ".nav_textlink_wrapper",
+            ".button-text .is-nav",
             {
                 opacity: 0,
                 yPercent: -100,
@@ -146,6 +141,21 @@ window.addEventListener("DOMContentLoaded", (event) => {
                     clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
                 }
             );
+            // 50 YEAR TEASER
+            gsap.timeline({
+                scrollTrigger: {
+                    trigger: ".teaser_layout",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: 5,
+                    ease: "none"
+                }
+            }).from(".teaser-bg-text", {
+                y: "100vw",
+                stagger: {
+                    each: 0.08
+                }
+            });
 
             return () => {
                 // optionally return a cleanup function that will be called when none of the conditions match anymore (after having matched)
